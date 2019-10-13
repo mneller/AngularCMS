@@ -6,7 +6,7 @@ export function initializeApp(appConfigService: AppConfigService) {
     return () => appConfigService.loadConfig();
 } // of function initializeApp(appConfigService: AppConfigService).
 
-export interface IAppConfig {
+export interface AppConfig {
   AppName: string;
 }
 
@@ -15,7 +15,7 @@ export interface IAppConfig {
 })
 export class AppConfigService {
 
-  settings: IAppConfig = null;
+  settings: AppConfig = null;
 
   constructor(private http: HttpClient) { }
   // constructor() { }
@@ -25,8 +25,8 @@ export class AppConfigService {
     const jsonFile = `./assets/config.json`;
 
     return new Promise<boolean>((resolve, reject) => {
-      this.http.get(jsonFile).toPromise().then((response: IAppConfig) => {
-        this.settings = <IAppConfig>response;
+      this.http.get(jsonFile).toPromise().then((response: AppConfig) => {
+        this.settings = <AppConfig>response;
         console.log( this.settings);
         resolve();   // Return Success
       }).catch((response: HttpErrorResponse) => {
@@ -40,5 +40,9 @@ export class AppConfigService {
       });
     });
   } // of loadConfig().
+
+  getAppName(): string {
+    return this.settings.AppName;
+  }
 
 } // class AppConfigService
