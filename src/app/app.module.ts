@@ -4,10 +4,12 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppComponent } from './app.component';
 import {AppConfigService, initializeApp} from './app-config.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { ImpressumComponent } from './common/impressum/impressum.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ImpressumComponent
   ],
   imports: [
     BrowserModule,

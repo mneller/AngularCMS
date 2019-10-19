@@ -1,0 +1,17 @@
+<p><strong>Kontakt-Adresse</strong></p>
+<p>{{impressumData.name}}
+  <br/>{{impressumData.street}}
+  <br/>{{impressumData.zip}} {{impressumData.city}}
+  <br/>{{impressumData.country}}</p>
+<p>
+  E-Mail:<br/>{{impressumData.email}}</p>
+<p>&nbsp;</p>
+<p><strong>Haftungsausschluss</strong></p>
+<p *ngFor="let p1 of impressumData.nonliability">{{p1}}</p>
+<p><strong>Haftungsausschluss f&uuml;r Links</strong></p>
+<p>{{impressumData.nonliabilityLinks}}</p>
+<p><strong>Urheberrechte</strong></p>
+<p> {{impressumData.copyright}}</p>
+<p>&nbsp;</p>
+<p>Quelle: <a [href]="impressumData.sourceLink" target="_blank">{{impressumData.sourceText}}</a>
+</p>
