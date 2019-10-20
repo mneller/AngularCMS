@@ -1,18 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-  <h1 class="alert alert-primary">
-    Welcome to {{ title }}!
-  </h1>
-  <div class="row">
-    <div class="col-6">
-      <p>Hallo Leute</p>
-      <p>Ich hoffe es geht euch gut</p>
-    </div>
-    <div class="col-4">
-      Nur ein paar Notizen
-    </div>
-  </div>
-  <footer><app-impressum></app-impressum></footer>
+  <nav>
+    <button class="btn btn-primary" routerLink="/home" routerLinkActive="active">Home</button>
+    <button class="btn btn-secondary" routerLink="/impressum" routerLinkActive="active">Impressum</button>
+  </nav>
+  <hr>
+  <router-outlet></router-outlet>
 </div>
 
 
