@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ImpressumComponent } from './impressum.component';
+import {AppConfigService} from '../../app-config.service';
+import {MockAppConfigService} from '../../mock-app-config.service';
 
 describe('ImpressumComponent', () => {
   let component: ImpressumComponent;
@@ -8,7 +10,8 @@ describe('ImpressumComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImpressumComponent ]
+      declarations: [ ImpressumComponent ],
+      providers: [{provide: AppConfigService, useClass: MockAppConfigService}],
     })
     .compileComponents();
   }));

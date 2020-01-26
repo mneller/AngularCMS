@@ -8,7 +8,7 @@ import { ImpressumComponent } from './common/impressum/impressum.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   { path: 'impressum', component: ImpressumComponent},
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}
