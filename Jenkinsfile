@@ -15,7 +15,7 @@ pipeline {
     stage('UnitTest') {
       steps {
         sh '''export PATH=./node_modules/.bin:${PATH}
-ng test'''
+ng test --single-run true'''
       }
     }
 
