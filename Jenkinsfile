@@ -8,7 +8,10 @@ pipeline {
   stages {
     stage('Prepare') {
       steps {
-        sh 'npm install'
+        sh '''apt-get install xvfb firefox dbus-x11
+xvfb-run firefox
+npm install
+'''
       }
     }
 
