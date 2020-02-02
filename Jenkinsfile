@@ -14,9 +14,8 @@ pipeline {
 
     stage('UnitTest') {
       steps {
-        sh '''ng e2e --webdriver-update
-
-'''
+        sh '''export PATH=./node_modules/.bin:${PATH}
+ng e2e --webdriver-update'''
       }
     }
 
@@ -36,6 +35,5 @@ ng build'''
   }
   environment {
     HOME = '.'
-    PATH = './node_modules/.bin:${PATH}'
   }
 }
