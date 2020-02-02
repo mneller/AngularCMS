@@ -36,5 +36,6 @@ ng build'''
   }
   environment {
     HOME = '.'
+    PATH = './node_modules/.bin:${PATH}'
   }
 }
