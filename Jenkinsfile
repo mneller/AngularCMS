@@ -15,13 +15,14 @@ pipeline {
     stage('UnitTest') {
       steps {
         sh '''export PATH=./node_modules/.bin:${PATH}
-ng e2e --webdriver-update'''
+ng test'''
       }
     }
 
     stage('E2E Test') {
       steps {
-        sh 'echo \'TODO E2E Test\';'
+        sh '''export PATH=./node_modules/.bin:${PATH}
+ng e2e --webdriver-update'''
       }
     }
 
