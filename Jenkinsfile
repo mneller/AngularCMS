@@ -14,7 +14,9 @@ pipeline {
 
     stage('UnitTest') {
       steps {
-        sh 'echo \'TODO\';'
+        sh '''ng e2e --webdriver-update
+
+'''
       }
     }
 
