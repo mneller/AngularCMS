@@ -14,7 +14,7 @@ pipeline {
 
     stage('UnitTest') {
       steps {
-        sh 'echo \'TODO\';'
+        sh 'ng test;'
       }
     }
 
