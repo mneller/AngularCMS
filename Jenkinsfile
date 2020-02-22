@@ -1,7 +1,7 @@
 pipeline {
   agent {
     dockerfile {
-      filename 'Dockerfile'
+      filename './Dockerfile'
     }
 
   }
@@ -14,7 +14,7 @@ pipeline {
 
     stage('UnitTest') {
       steps {
-        sh 'echo \'TODO\';'
+        sh 'ng test --watch=false --browsers=ChromeHeadless'
       }
     }
 
