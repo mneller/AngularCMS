@@ -1,7 +1,7 @@
 pipeline {
   agent {
     dockerfile {
-      filename 'AngularCMS_master/Dockerfile'
+      filename './Dockerfile'
     }
 
   }
