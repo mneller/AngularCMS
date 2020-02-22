@@ -14,7 +14,7 @@ pipeline {
 
     stage('UnitTest') {
       steps {
-        sh 'ng test --watch=false --browsers=ChromeHeadless'
+        sh 'npm run test-headless'
       }
     }
 
