@@ -8,8 +8,8 @@ pipeline {
   stages {
     stage('Prepare') {
       steps {
-        sh '''sudo apt update;
-sudo apt dist-upgrade;
+        sh '''apt-get update;
+apt-get dist-upgrade;
 npm install;'''
       }
     }
