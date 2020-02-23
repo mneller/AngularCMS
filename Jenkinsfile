@@ -8,7 +8,9 @@ pipeline {
   stages {
     stage('Prepare') {
       steps {
-        sh 'npm install'
+        sh '''apt update;
+apt dist-upgrade;
+npm install;'''
       }
     }
 
