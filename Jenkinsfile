@@ -8,8 +8,8 @@ pipeline {
   stages {
     stage('Prepare') {
       steps {
-        sh '''sudo apt-get update;
-sudo apt-get install chromium-browser -y
+        sh '''apt-get update;
+apt-get install chromium-browser -y
 npm install;
 '''
       }
