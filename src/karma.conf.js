@@ -31,11 +31,11 @@ module.exports = function (config) {
       ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',
         flags: [
-          '--headless',
-          '--disable-gpu',
+          //'--headless',
+          //'--disable-gpu',
           '--no-sandbox', // required to run without privileges in docker
-          '--user-data-dir=/tmp/chrome-test-profile',
-          '--disable-web-security'
+          //'--user-data-dir=/tmp/chrome-test-profile',
+          //'--disable-web-security'
         ]
       }
     },
