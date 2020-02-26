@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -yq google-chrome-stable
 WORKDIR /app
 
 # add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+ENV PATH=/app/node_modules/.bin:$PATH
+ENV privileged=true;
 
 # install and cache app dependencies
 COPY package.json /app/package.json
