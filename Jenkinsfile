@@ -21,7 +21,7 @@ pipeline {
 
     stage('E2E Test') {
       steps {
-        sh 'echo \'TODO E2E Test\';'
+        sh 'npm run e2e'
       }
     }
 
