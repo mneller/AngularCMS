@@ -8,4 +8,7 @@ export class AppPage {
   getTitleText() {
     return element(by.css('app-root h1')).getText();
   }
+  getImpressumText() {
+    return element(by.id('idImpressum')).getText();
+  }
 }
