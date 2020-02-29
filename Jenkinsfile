@@ -20,8 +20,9 @@ pipeline {
     }
 
     stage('E2E Test') {
-      steps {g
-        sh 'echo \'TODO E2E Test\';'
+      steps {
+        sh 'npm list | grep jasmine';
+        sh 'npm run e2e'
       }
     }
 
