@@ -15,14 +15,16 @@ pipeline {
 
     stage('UnitTest') {
       steps {
-        sh 'npm run test-headless'
+        sh '''# npm run test-headless
+echo "paused"'''
       }
     }
 
     stage('E2E Test') {
       steps {
-        sh 'npm list | grep jasmine';
-        sh 'npm run e2e'
+        sh 'npm list | grep jasmine'
+        sh '''# npm run e2e
+echo "paused"'''
       }
     }
 
