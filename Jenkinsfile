@@ -29,12 +29,14 @@ echo "paused"'''
     }
 
     stage('Build') {
-      sshagent (credentials: ['ssh']) {
-        sh '''export PATH=./node_modules/.bin:${PATH};
-ng build --prod;
-echo "Fertig"'''
-        sh '''ssh ellermeier.net@ssh.stackcp.com ls -al;
-echo "Fertig ssh";'''
+      steps {
+        sshagent (credentials: ['ssh']) {
+          sh '''export PATH=./node_modules/.bin:${PATH};
+                ng build --prod;
+                echo "Fertig"'''
+          sh '''ssh ellermeier.net@ssh.stackcp.com ls -al;
+                echo "Fertig ssh";'''
+        }
       }
     }
 
