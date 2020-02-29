@@ -29,7 +29,7 @@ echo "paused"'''
     }
 
     stage('Build') {
-      steps {
+      sshagent (credentials: ['ssh']) {
         sh '''export PATH=./node_modules/.bin:${PATH};
 ng build --prod;
 echo "Fertig"'''
