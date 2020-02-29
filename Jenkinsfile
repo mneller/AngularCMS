@@ -20,7 +20,7 @@ pipeline {
     }
 
     stage('E2E Test') {
-      steps {
+      steps {g
         sh 'echo \'TODO E2E Test\';'
       }
     }
