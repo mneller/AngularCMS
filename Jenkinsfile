@@ -21,7 +21,8 @@ pipeline {
 
     stage('E2E Test') {
       steps {
-        sh 'npm run e2e'
+        sh '''npm list | grep jasmine;
+npm run e2e'''
       }
     }
 
