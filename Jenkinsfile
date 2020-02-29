@@ -32,6 +32,7 @@ echo "paused"'''
       steps {
         sh '''export PATH=./node_modules/.bin:${PATH};
 ng build'''
+        sh 'ssh --help;'
       }
     }
 
