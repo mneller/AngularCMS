@@ -36,6 +36,7 @@ pipeline {
           echo 'Has added to kownhosts'
           sh 'ssh ellermeier.net@ssh.stackcp.com ls -al'
           sh 'echo "Finish ssh"'
+
         }
       }
     }
