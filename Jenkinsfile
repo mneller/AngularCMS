@@ -8,8 +8,7 @@ pipeline {
   stages {
     stage('Prepare') {
       steps {
-        sh '''npm install;
-'''
+        sh 'npm install'
       }
     }
 
@@ -32,9 +31,11 @@ pipeline {
         sh 'ng build -prod'
 
         sshagent (credentials: ['martinSSH']) {
+          echo 'ssh config start'
           sh 'ssh-keyscan -H ssh.stackcp.com >> ~/.ssh/known_hosts'
+          echo 'Has added to kownhosts'
           sh 'ssh ellermeier.net@ssh.stackcp.com ls -al'
-          sh 'echo "hugo"'
+          sh 'echo "Finish ssh"'
         }
       }
     }
