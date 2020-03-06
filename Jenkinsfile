@@ -14,7 +14,8 @@ pipeline {
 
     stage('UnitTest') {
       steps {
-        sh 'npm run test-headless'
+        sh '''# npm run test-headless
+echo "paused"'''
       }
     }
 
@@ -28,7 +29,7 @@ pipeline {
         environment {
             SSH_PARA = '-o StrictHostKeyChecking=no'
             // SSH_USER = '*** set as jenkins parameter ***'
-            // SSH_HOST = '*** set as jenkins paramater ***'
+            // SSH_HOST = '*** set as jenkins parameter ***'
         }
       steps {
         sh 'export PATH=./node_modules/.bin:${PATH}'
