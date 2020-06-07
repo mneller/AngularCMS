@@ -1,6 +1,6 @@
 {
-    "AppName": "ellermeier.net - AngularCMS",
-    "Impressum": {
+    "appName": "ellermeier.net - AngularCMS",
+    "impressum": {
       "name": "FirstNyme SecondName",
       "street": "Diana Waidmann Strasse 9",
       "zip": "8046",

@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AppConfigService} from './app-config.service';
 import {Title} from '@angular/platform-browser';
+import {Store} from '@ngrx/store';
+import {AppState} from './app.reducer';
+import {setAppTitle} from './app.actions';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +13,14 @@ import {Title} from '@angular/platform-browser';
 export class AppComponent implements OnInit {
   title = 'ellermeier.net';
 
-  constructor(private appConfigService: AppConfigService, private titleService: Title) {
+  constructor(private store: Store<AppState>,  private appConfigService: AppConfigService, private titleService: Title) {
   }
 
   ngOnInit(): void {
     this.title = this.appConfigService.getAppName();
+    console.log('Title:' + this.title);
     this.titleService.setTitle(this.title);
+    this.store.dispatch(setAppTitle({newTitle: 'Katze'}));
   }
 
 }

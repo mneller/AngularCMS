@@ -7,6 +7,11 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { ImpressumComponent } from './common/impressum/impressum.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { StoreModule } from '@ngrx/store';
+import * as fromAppReducer from './app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import {initialAppState} from './app.reducer';
 
 export const appRoutes: Routes = [
   { path: 'impressum', component: ImpressumComponent},
@@ -27,7 +32,9 @@ export const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       // { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    StoreModule.forRoot({ app: fromAppReducer.reducer}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     AppConfigService,

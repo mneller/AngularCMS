@@ -37,7 +37,7 @@ export class AppConfigService {
             resolve(false);
           }
           const  impressumData: ImpressumData = {
-            name: 'FirstNyme SecondName',
+            name: 'FirstName SecondName',
             street: 'Diana Waidmann Strasse 9',
             zip: '8046',
             city: 'Zürich',
@@ -72,10 +72,12 @@ export class AppConfigService {
   } // of loadConfig().
 
   getAppName(): string {
+    console.log("getAppName() called");
     return this.settings.appName;
   }
 
   getImpressum(): ImpressumData {
+    console.log('Hugo was here');
     return this.settings.impressum;
   }
 
