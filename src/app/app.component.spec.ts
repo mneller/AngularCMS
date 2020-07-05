@@ -8,16 +8,31 @@ import {ImpressumData} from './common/impressum/impressum.component';
 import {componentFactoryName} from '@angular/compiler';
 import {Title} from '@angular/platform-browser';
 import {MockAppConfigService} from './mock-app-config.service';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import {AppState, initialAppState} from './app.reducer';
+import {Store} from '@ngrx/store';
+import {from} from 'rxjs';
+
+class MockStateConfig<T> {
+}
 
 describe('AppComponent', () => {
+  let store: MockStore;
+
+  const initialState = {};
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
-      providers: [{provide: AppConfigService, useClass: MockAppConfigService}, Title],
+      providers: [
+        {provide: AppConfigService, useClass: MockAppConfigService},
+        provideMockStore({ initialState }),
+        Title],
       schemas: [ NO_ERRORS_SCHEMA ],
     }).compileComponents();
+    store = TestBed.inject(MockStore);
   }));
 
   it('should create the app', () => {

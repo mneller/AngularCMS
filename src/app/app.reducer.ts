@@ -2,7 +2,7 @@ import {Action, createReducer, createSelector, on} from '@ngrx/store';
 import * as AppActions from "./app.actions";
 
 export interface AppState {
-  title: string
+  title: string,
 };
 
 export const initialAppState: AppState = {
