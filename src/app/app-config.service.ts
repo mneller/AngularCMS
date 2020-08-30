@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {ImpressumData} from './common/impressum/impressum.component';
+import {Store} from '@ngrx/store';
+import {AppState} from './app.reducer';
+import {setAppTitle} from './app.actions';
 
 // Factory function for this service
 export function initializeApp(appConfigService: AppConfigService) {
@@ -19,7 +22,7 @@ export class AppConfigService {
 
   settings: AppConfig = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private store: Store<AppState>) { }
   // constructor() { }
 
   // loadConfig(): Promise<boolean> {
@@ -29,7 +32,7 @@ export class AppConfigService {
     return new Promise<boolean>((resolve, reject) => {
       this.http.get(jsonFile).toPromise().then((response: AppConfig) => {
         this.settings = <AppConfig>response;
-        console.log( this.settings);
+        this.store.dispatch(setAppTitle({newTitle: this.settings.appName}));
         resolve();   // Return Success
       }).catch((response: HttpErrorResponse) => {
           console.log(response);
@@ -65,6 +68,7 @@ export class AppConfigService {
             sourceText: 'Impressum-Generator von SwissAnwalt',
           };
         this.settings = { appName: 'Hugo',  impressum: impressumData};
+        this.store.dispatch(setAppTitle({newTitle: 'Katzenkeks'}));
         resolve(true);
          console.log( this.settings);
       });
@@ -72,12 +76,10 @@ export class AppConfigService {
   } // of loadConfig().
 
   getAppName(): string {
-    console.log("getAppName() called");
     return this.settings.appName;
   }
 
   getImpressum(): ImpressumData {
-    console.log('Hugo was here');
     return this.settings.impressum;
   }
 

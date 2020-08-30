@@ -1,17 +1,16 @@
 import {BrowserModule, Title} from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {AppConfigService, initializeApp} from './app-config.service';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { ImpressumComponent } from './common/impressum/impressum.component';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { StoreModule } from '@ngrx/store';
+import {HttpClientModule} from '@angular/common/http';
+import {ImpressumComponent} from './common/impressum/impressum.component';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {StoreModule} from '@ngrx/store';
 import * as fromAppReducer from './app.reducer';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import {initialAppState} from './app.reducer';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
 
 export const appRoutes: Routes = [
   { path: 'impressum', component: ImpressumComponent},
@@ -33,7 +32,8 @@ export const appRoutes: Routes = [
       appRoutes,
       // { enableTracing: true } // <-- debugging purposes only
     ),
-    StoreModule.forRoot({ app: fromAppReducer.reducer}),
+    // StoreModule.forRoot({ app: fromAppReducer.reducer}),
+    StoreModule.forRoot(fromAppReducer.reducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [

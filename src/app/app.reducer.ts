@@ -1,5 +1,5 @@
-import {Action, createReducer, createSelector, on} from '@ngrx/store';
-import * as AppActions from "./app.actions";
+import {Action, createReducer, on} from '@ngrx/store';
+import * as AppActions from './app.actions';
 
 export interface AppState {
   title: string,
@@ -11,7 +11,7 @@ export const initialAppState: AppState = {
 
 const appReducer = createReducer(
   initialAppState,
-  on(AppActions.setAppTitle, (state, { newTitle }) => ({title: newTitle}))
+  on(AppActions.setAppTitle, (state, { newTitle }) => ({...state, 'title': newTitle}))
 );
 
 export function reducer(state: AppState | undefined, action: Action) {
