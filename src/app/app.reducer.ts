@@ -11,7 +11,7 @@ export const initialAppState: AppState = {
 
 const appReducer = createReducer(
   initialAppState,
-  on(AppActions.setAppTitle, (state, { newTitle }) => ({...state, 'title': newTitle}))
+  on(AppActions.setAppTitle, (state, { newTitle }) => ({...state, 'title' : newTitle}))
 );
 
 export function reducer(state: AppState | undefined, action: Action) {

@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
     this.title = this.appConfigService.getAppName();
     console.log('Title:' + this.title);
     this.titleService.setTitle(this.title);
-    this.store.dispatch(setAppTitle({newTitle: 'Katze'}));
   }
 
 }

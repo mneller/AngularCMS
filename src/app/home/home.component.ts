@@ -8,15 +8,15 @@ import {AppState} from '../app.reducer';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  title$: Observable<string>;
+  app$: Observable<AppState>;
   // constructor(private appConfigService: AppConfigService, private titleService: Title) {
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<{app: AppState}>) {
 
   }
 
   ngOnInit() {
-    this.title$ = this.store.pipe(select('title'));
-    console.log(this.title$);
+    this.app$ = this.store.pipe(select('app'));
+    //console.log(this.app$);
   }
 
 }

@@ -32,8 +32,8 @@ export const appRoutes: Routes = [
       appRoutes,
       // { enableTracing: true } // <-- debugging purposes only
     ),
-    // StoreModule.forRoot({ app: fromAppReducer.reducer}),
-    StoreModule.forRoot(fromAppReducer.reducer),
+    StoreModule.forRoot({ app: fromAppReducer.reducer}),
+    //StoreModule.forRoot(fromAppReducer.reducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [

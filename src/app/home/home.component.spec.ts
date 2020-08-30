@@ -7,13 +7,14 @@ import {MockAppConfigService} from '../mock-app-config.service';
 import {Title} from '@angular/platform-browser';
 import {MockStore, provideMockStore} from '@ngrx/store/testing';
 import {AppState, initialAppState} from '../app.reducer';
-import {Store} from '@ngrx/store';
 
 describe('HomeComponent', () => {
-  let store: MockStore<AppState>;
+  let store: MockStore;
   const initialState = {
+    app: {
       title: 'toBeSet',
-    } as AppState;
+    }
+  };
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
@@ -21,13 +22,13 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
       providers: [
-        provideMockStore<AppState>({ initialState }),
+        provideMockStore({ initialState }),
         // , Title
       ],
       schemas: [ NO_ERRORS_SCHEMA ],
     })
     .compileComponents();
-    // store = TestBed.get(Store);
+    store = TestBed.inject(MockStore);
   }));
 
   beforeEach(() => {
