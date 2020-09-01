@@ -1,7 +1,25 @@
 pipeline {
   agent {
-    dockerfile {
-      filename './Dockerfile'
+    docker {
+      image 'node:12.14.1'
+      args '''# base image
+# FROM node:12.14.1
+
+# install chrome for protractor tests
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c \'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list\'
+RUN apt-get update && apt-get install -yq google-chrome-stable
+
+# set working directory
+WORKDIR /app
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH=/app/node_modules/.bin:$PATH
+ENV privileged=true;
+
+# install and cache app dependencies
+COPY package.json /app/package.json
+RUN npm install'''
     }
 
   }
@@ -9,7 +27,6 @@ pipeline {
     stage('Prepare') {
       steps {
         sh 'npm install'
-
       }
     }
 
@@ -27,26 +44,19 @@ echo "paused"'''
     }
 
     stage('Build') {
-        environment {
-            SSH_PARA = '-o StrictHostKeyChecking=no'
-            // SSH_USER = '*** set as jenkins parameter ***'
-            // SSH_HOST = '*** set as jenkins parameter ***'
-        }
+      environment {
+        SSH_PARA = '-o StrictHostKeyChecking=no'
+      }
       steps {
         sh 'export PATH=./node_modules/.bin:${PATH}'
         sh 'ng build --prod --aot'
-
-        sshagent (credentials: ['martinSSH']) {
-          //echo 'ssh config start'
-          // sh 'mkdir ~/.ssh'
-          // sh 'ssh-keyscan -H ssh.stackcp.com >> ~/.ssh/known_hosts'
-          // echo 'Has added to kownhosts'
+        sshagent(credentials: ['martinSSH']) {
           sh 'ls -al dist'
           sh 'ssh ${SSH_PARA} ${SSH_USER}@${SSH_HOST} rm *.js'
           sh 'scp ${SSH_PARA} dist/AngularCMS/*.* ${SSH_USER}@${SSH_HOST}:.'
           sh 'echo "Finish ssh"'
-
         }
+
       }
     }
 
